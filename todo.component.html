@@ -1,0 +1,26 @@
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <section>
+      <h1>ToDo List</h1>
+      <p>A place to store the things you have to do!</p>
+
+      <input placeholder="filter"/>
+      
+      <ol>
+        <li *ngFor='let todo of todos' class="list">
+              <button (click)='completed()' *ngIf="!todo.completed" class="complete-button">complete</button>
+              <span [ngClass]="{'completed': todo.completed === true}">{{todo.task}}</span>
+              <button (click)='done()' class="done-button">X</button>
+        </li>
+      </ol>
+      
+      <input type="text" placeholder="new task" [(ngModel)]='newItem'/>
+      
+      <button (click)='add()' class="add-button">add</button>
+    </section>
+  </div>
+</body>
